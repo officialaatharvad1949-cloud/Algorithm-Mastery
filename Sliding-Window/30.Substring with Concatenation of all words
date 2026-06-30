@@ -1,0 +1,51 @@
+vector<int> findSubstring(string s, vector<string>& words) {
+    if (s.empty() || words.empty()) return {};
+    
+    unordered_map<string, int> counts;
+    for (const string& w : words) counts[w]++;
+    
+    int n = s.size();
+    int num_words = words.size();
+    int word_len = words[0].size();
+    int total_len = num_words * word_len;
+    vector<int> ans;
+
+    // Only iterate up to word_len to cover all possible starting offsets
+    for (int i = 0; i < word_len; i++) {
+        int left = i, count = 0;
+        unordered_map<string, int> seen;
+        
+        for (int right = i; right <= n - word_len; right += word_len) {
+            string word = s.substr(right, word_len);
+            
+            if (counts.find(word) != counts.end()) {
+                seen[word]++;
+                count++;
+                
+                // If we have more of this word than allowed, shrink from the left
+                while (seen[word] > counts[word]) {
+                    string left_word = s.substr(left, word_len);
+                    seen[left_word]--;
+                    count--;
+                    left += word_len;
+                }
+                
+                // If window size matches the number of words, we found a valid start
+                if (count == num_words) {
+                    ans.push_back(left);
+                    // Shift the window left to look for the next possibility
+                    string left_word = s.substr(left, word_len);
+                    seen[left_word]--;
+                    count--;
+                    left += word_len;
+                }
+            } else {
+                // Not in map: reset everything
+                seen.clear();
+                count = 0;
+                left = right + word_len;
+            }
+        }
+    }
+    return ans;
+}

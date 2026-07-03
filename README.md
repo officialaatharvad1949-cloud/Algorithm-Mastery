@@ -12,3 +12,15 @@ A collection of high-quality solutions for difficult algorithmic problems.
 ## Patterns Learned
 * **Sliding Window**: Used for problems involving fixed or variable-sized subarrays.
 * **Greedy**: Used for optimal activity selection.
+
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## Array
+|  |
+| ------- |
+| [0135-candy](https://github.com/officialaatharvad1949-cloud/Algorithm-Mastery/tree/master/0135-candy) |
+## Greedy
+|  |
+| ------- |
+| [0135-candy](https://github.com/officialaatharvad1949-cloud/Algorithm-Mastery/tree/master/0135-candy) |
+<!---LeetCode Topics End-->

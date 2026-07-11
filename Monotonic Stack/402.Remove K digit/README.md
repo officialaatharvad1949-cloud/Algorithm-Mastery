@@ -14,3 +14,4 @@ Output: "200"
 Explanation: Remove the leading 1, and the number is 200. Note that the output must not contain leading zeroes.
 
 Main Intuition: Keep the smaller digit at the start.
+To get the smallest possible integer, the smaller digits must be kept at the beginning. This can be achieved by getting rid of K larger digits using a simple greedy approach that works by processing each digit and keeping the smallest possible digit, aiming for the smallest resulting number. Prioritizing smaller digits for the leftmost positions ensures the resulting number is minimized.
